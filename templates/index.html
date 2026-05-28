@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>RoadWatch</title>
+
+    <!-- Google Font -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins', sans-serif;
+        }
+
+        body{
+
+            min-height:100vh;
+
+            background:
+            linear-gradient(rgba(0,0,0,0.5),
+            rgba(0,0,0,0.6)),
+
+            url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600&auto=format&fit=crop');
+
+            background-size:cover;
+            background-position:center;
+
+            overflow-x:hidden;
+
+            color:white;
+        }
+
+        /* Navbar */
+
+        nav{
+
+            width:100%;
+
+            padding:20px 60px;
+
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            background:rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(12px);
+
+            border-bottom:1px solid rgba(255,255,255,0.1);
+
+            position:fixed;
+
+            top:0;
+
+            z-index:1000;
+        }
+
+        .logo{
+
+            font-size:34px;
+            font-weight:700;
+            color:#00e0ff;
+        }
+
+        nav ul{
+
+            display:flex;
+            gap:30px;
+            list-style:none;
+        }
+
+        nav ul li a{
+
+            text-decoration:none;
+            color:white;
+
+            transition:0.3s;
+        }
+
+        nav ul li a:hover{
+
+            color:#00e0ff;
+        }
+
+        /* Hero Section */
+
+        .hero{
+
+            width:100%;
+
+            min-height:100vh;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            padding:120px 20px 50px;
+        }
+
+        .glass-card{
+
+            width:500px;
+
+            padding:45px;
+
+            border-radius:25px;
+
+            background:rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(20px);
+
+            border:1px solid rgba(255,255,255,0.15);
+
+            box-shadow:0 8px 32px rgba(0,0,0,0.4);
+
+            text-align:center;
+        }
+
+        .glass-card h1{
+
+            font-size:42px;
+
+            margin-bottom:10px;
+
+            color:#00e0ff;
+        }
+
+        .glass-card p{
+
+            color:#ddd;
+
+            margin-bottom:25px;
+
+            font-size:15px;
+        }
+
+        /* Upload Area */
+
+        .upload-box{
+
+            border:2px dashed rgba(255,255,255,0.3);
+
+            padding:30px;
+
+            border-radius:20px;
+
+            cursor:pointer;
+
+            transition:0.3s;
+
+            margin-bottom:20px;
+        }
+
+        .upload-box:hover{
+
+            background:rgba(255,255,255,0.08);
+
+            border-color:#00e0ff;
+        }
+
+        .upload-box i{
+
+            font-size:55px;
+
+            color:#00e0ff;
+
+            margin-bottom:15px;
+        }
+
+        .upload-box h3{
+
+            font-weight:500;
+
+            margin-bottom:8px;
+        }
+
+        .upload-box span{
+
+            font-size:13px;
+
+            color:#ccc;
+        }
+
+        input[type="file"]{
+
+            display:none;
+        }
+
+        /* Image Preview */
+
+        #preview{
+
+            width:100%;
+
+            margin-top:20px;
+
+            border-radius:15px;
+
+            display:none;
+
+            box-shadow:0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Buttons */
+
+        .btn{
+
+            width:100%;
+
+            padding:15px;
+
+            border:none;
+
+            border-radius:15px;
+
+            margin-top:18px;
+
+            font-size:16px;
+
+            font-weight:600;
+
+            cursor:pointer;
+
+            transition:0.3s;
+        }
+
+        .detect-btn{
+
+            background:linear-gradient(45deg,#00e0ff,#007bff);
+
+            color:white;
+        }
+
+        .detect-btn:hover{
+
+            transform:translateY(-3px);
+
+            box-shadow:0 8px 20px rgba(0,224,255,0.4);
+        }
+
+        .dashboard-btn{
+
+            background:rgba(255,255,255,0.1);
+
+            color:white;
+
+            border:1px solid rgba(255,255,255,0.2);
+
+            text-decoration:none;
+
+            display:block;
+
+            text-align:center;
+
+            line-height:25px;
+        }
+
+        .dashboard-btn:hover{
+
+            background:#00e0ff;
+
+            color:black;
+        }
+
+        /* Features */
+
+        .features{
+
+            width:100%;
+
+            display:flex;
+            justify-content:center;
+
+            gap:30px;
+
+            flex-wrap:wrap;
+
+            margin-top:40px;
+        }
+
+        .feature-box{
+
+            width:140px;
+
+            padding:20px;
+
+            border-radius:18px;
+
+            background:rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(10px);
+
+            transition:0.3s;
+        }
+
+        .feature-box:hover{
+
+            transform:translateY(-5px);
+
+            background:rgba(255,255,255,0.15);
+        }
+
+        .feature-box i{
+
+            font-size:28px;
+
+            color:#00e0ff;
+
+            margin-bottom:10px;
+        }
+
+        .feature-box h4{
+
+            font-size:14px;
+
+            font-weight:500;
+        }
+
+        /* Footer */
+
+        footer{
+
+            text-align:center;
+
+            padding:20px;
+
+            background:rgba(0,0,0,0.3);
+
+            color:#bbb;
+
+            font-size:14px;
+        }
+
+/* ========================================= */
+/* Uploaded Files */
+/* ========================================= */
+
+.saved-files{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+}
+
+.file-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    background:rgba(255,255,255,0.08);
+
+    padding:15px;
+
+    border-radius:15px;
+
+    transition:0.3s;
+}
+
+.file-item:hover{
+
+    background:rgba(255,255,255,0.15);
+}
+
+.file-item img{
+
+    width:100px;
+
+    height:80px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+}
+
+.file-details h4{
+
+    color:#00e0ff;
+
+    margin-bottom:5px;
+}
+
+.file-details p{
+
+    color:#ccc;
+
+    font-size:13px;
+}
+
+        /* Responsive */
+
+        @media(max-width:600px){
+
+            nav{
+
+                padding:20px;
+            }
+
+            nav ul{
+
+                gap:15px;
+            }
+
+            .glass-card{
+
+                width:100%;
+
+                padding:30px 20px;
+            }
+
+            .glass-card h1{
+
+                font-size:32px;
+            }
+
+            .features{
+
+                gap:15px;
+            }
+
+            .feature-box{
+
+                width:120px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav>
+
+        <div class="logo">
+
+            <i class="fa-solid fa-road"></i>
+
+            RoadWatch
+
+        </div>
+
+        <ul>
+
+            <li><a href="/">Home</a></li>
+
+            <li><a href="/dashboard">Dashboard</a></li>
+
+            <li><a href="/about">About</a></li>
+
+        </ul>
+
+    </nav>
+
+    <!-- Hero -->
+
+    <section class="hero">
+
+        <div class="glass-card">
+
+            <h1>AI Road Damage Detection</h1>
+
+            <p>
+
+                Upload road images and detect potholes,
+                cracks and road damage using AI technology.
+
+            </p>
+
+            <!-- Upload Form -->
+
+            <form action="/upload"
+            method="POST"
+            enctype="multipart/form-data">
+
+                <label for="imageInput">
+
+                    <div class="upload-box">
+
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                        <h3>Upload Road Image</h3>
+
+                        <span>Click here to browse files</span>
+
+                    </div>
+
+                </label>
+
+                <input type="file"
+                name="image"
+                id="imageInput"
+                required>
+
+                <img id="preview">
+
+                <button type="submit"
+                class="btn detect-btn">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    Detect Damage
+
+                </button>
+
+            </form>
+
+            <!-- Dashboard Button -->
+
+            <a href="/dashboard"
+            class="btn dashboard-btn">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                Open Dashboard
+
+            </a>
+
+            <!-- Features -->
+
+            <div class="features">
+
+                <div class="feature-box">
+
+                    <i class="fa-solid fa-camera"></i>
+
+                    <h4>Image Upload</h4>
+
+                </div>
+
+                <div class="feature-box">
+
+                    <i class="fa-solid fa-brain"></i>
+
+                    <h4>AI Detection</h4>
+
+                </div>
+
+                <div class="feature-box">
+
+                    <i class="fa-solid fa-chart-column"></i>
+
+                    <h4>Analytics</h4>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================= -->
+<!-- Uploaded Files Section -->
+<!-- ========================================= -->
+
+<div class="glass-card"
+style="margin-top:40px;">
+
+    <h2 style="margin-bottom:15px; color:#00e0ff;">
+
+        Uploaded Files
+
+    </h2>
+
+    <p style="margin-bottom:25px; color:#ccc;">
+
+        Previously uploaded road images.
+
+    </p>
+
+    <div class="saved-files">
+
+        {% if files %}
+
+            {% for file in files %}
+
+            <div class="file-item">
+
+                <img src="{{ url_for(
+                'static',
+                filename='uploads/images/' + file) }}"
+
+                alt="uploaded-image">
+
+                <div class="file-details">
+
+                    <h4>{{ file }}</h4>
+
+                    <p>
+
+                        Uploaded successfully
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>No uploaded files found.</p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+    <!-- Footer -->
+
+    <footer>
+
+        © 2026 RoadWatch | Smart AI Road Monitoring System
+
+    </footer>
+
+    <!-- JavaScript -->
+
+    <script>
+
+        const imageInput =
+        document.getElementById('imageInput');
+
+        const preview =
+        document.getElementById('preview');
+
+        imageInput.onchange = evt => {
+
+            const [file] = imageInput.files;
+
+            if(file){
+
+                preview.src =
+                URL.createObjectURL(file);
+
+                preview.style.display = "block";
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

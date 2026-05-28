@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Detection Result</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.6),
+    rgba(0,0,0,0.7)),
+
+    url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600&auto=format&fit=crop');
+
+    background-size:cover;
+    background-position:center;
+
+    color:white;
+}
+
+.container{
+
+    width:90%;
+    max-width:900px;
+
+    margin:50px auto;
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:25px;
+
+    padding:40px;
+
+    text-align:center;
+
+    box-shadow:0 8px 30px rgba(0,0,0,0.4);
+}
+
+h1{
+
+    color:#00e0ff;
+
+    margin-bottom:30px;
+
+    font-size:42px;
+}
+
+.result-image{
+
+    width:100%;
+
+    max-height:500px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    margin-bottom:30px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.4);
+}
+
+.info-box{
+
+    background:rgba(255,255,255,0.08);
+
+    padding:25px;
+
+    border-radius:20px;
+
+    margin-top:20px;
+}
+
+.info-box h2{
+
+    color:#00e0ff;
+
+    margin-bottom:15px;
+}
+
+.info-box p{
+
+    font-size:18px;
+
+    line-height:1.8;
+}
+
+.btn{
+
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:15px 30px;
+
+    border-radius:12px;
+
+    background:linear-gradient(45deg,#00e0ff,#007bff);
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:0.3s;
+}
+
+.btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 8px 20px rgba(0,224,255,0.4);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Detection Result</h1>
+
+    <img src="{{ image_path }}"
+    class="result-image">
+
+    <div class="info-box">
+
+        <h2>Severity Level</h2>
+
+        <p>{{ severity }}</p>
+
+    </div>
+
+    <div class="info-box">
+
+        <h2>Damage Details</h2>
+
+        <p>{{ damage_details }}</p>
+
+    </div>
+
+    <a href="/" class="btn">
+        Upload Another Image
+    </a>
+
+</div>
+
+</body>
+
+</html>
